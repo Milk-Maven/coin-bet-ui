@@ -1,9 +1,25 @@
 <script lang="ts">
-	import { post, betNewEndpoint, spookyPosts } from '$lib';
+	import { betCreateEndpoint, betGetEndpoint, post, spookyPosts } from '$lib';
+	// import type { PostEntryResponse } from 'deso-protocol';
+	// type betGet = Pick<
+	// 	PostEntryResponse,
+	// 	'PostHashHex' | 'PostExtraData' | 'PosterPublicKeyBase58Check'
+	// >;
 </script>
 
 <button
 	on:click={() => {
-		post(betNewEndpoint, spookyPosts[0]);
+		post(betCreateEndpoint, spookyPosts[0]);
 	}}>post test</button
+>
+
+<button
+	on:click={() => {
+		post(betGetEndpoint, {});
+	}}>get bet</button
+>
+<button
+	on:click={() => {
+		// get user
+	}}>get user</button
 >
