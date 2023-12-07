@@ -5,6 +5,7 @@ export const api = 'http://localhost:3000/';
 export const betNewEndpoint = 'bet/new';
 
 // Make an HTTP POST request
+// TODO turn this api into array that returns request function response function, request model, response model, per endpoint
 
 export async function post(endpoint: string, payload: any = {}) {
   let response = await fetch(`${api}${endpoint}`, {
@@ -21,7 +22,6 @@ export async function post(endpoint: string, payload: any = {}) {
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(payload) // body data type must match "Content-Type" header
   });
-
   response = await response.json();
   // @ts-ignore
   return response.result.data;
