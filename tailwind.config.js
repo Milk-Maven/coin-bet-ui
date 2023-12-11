@@ -3,6 +3,10 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
+      focus: {
+        cursor: 'pointer',
+        outline: 'none',
+      },
       colors: {
         prime1: "#000",
         prime2: "#ffd700",

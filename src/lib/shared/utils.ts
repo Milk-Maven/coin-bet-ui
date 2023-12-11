@@ -12,4 +12,3 @@ export function checkCondition(condition: boolean, errorMessage: string): void {
 }
 
 export type BetGetRequest = Pick<PostEntryResponse, 'PostHashHex' | 'PostExtraData' | 'PosterPublicKeyBase58Check'>
-

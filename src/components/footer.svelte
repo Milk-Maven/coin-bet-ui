@@ -1,18 +1,16 @@
 <script>
 	import '../app.css';
 	import { createEventDispatcher } from 'svelte';
-	import { appBorder } from '$lib/util';
+	import { appBorder, Page } from '$lib/util';
 
 	const dispatch = createEventDispatcher();
 </script>
 
-<footer class="">
-	<div class="mb-5 {appBorder} border-t-0 z-10 bg-prime1">
-		<nav class="flex justify-center p-3 px-10 gap-20">
-			<a class="text-xl text-secondary2" href="/markets">Markets</a>
-			<a class="text-xl text-secondary2" href="/create">Create</a>
-			<a class="text-xl text-secondary2" href="/about">About</a>
-			<a class="text-xl text-secondary2" href="/contact">Roadmap</a>
-		</nav>
-	</div>
+<footer class="{appBorder} border-b-0 z-10 bg-prime1 w-3/5 rounded-t-md">
+	<nav class="flex justify-around p-3 px-10 gap-20">
+		<a class="text-xl text-secondary2" href={Page.Markets}>Markets</a>
+		<a class="text-xl text-secondary2" href={Page.Create}>Create</a>
+		<a class="text-xl text-secondary2" href={Page.About}>About</a>
+		<a class="text-xl text-secondary2" href={Page.Contact}>Roadmap</a>
+	</nav>
 </footer>
