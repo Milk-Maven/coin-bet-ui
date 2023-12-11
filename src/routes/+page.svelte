@@ -1,41 +1,46 @@
 <script lang="ts">
 	import BetRequestForm from '../components/betRequestForm.svelte';
+	import AppContainer from '../components/appContainer.svelte';
 	import { spookyPosts } from '$lib/data';
 	import { post } from '$lib/api';
 	import { endpoints } from '$lib/shared/utils';
-	import type { BetGetRequest } from '$lib/shared/utils';
-	import type { BetCreate } from '$lib/shared/validators';
+	import { appBorder } from '$lib/util';
 </script>
 
-<div class="bg-[#040404]">
-	<BetRequestForm
-		on:betCreated={function handleDateSelected(event) {
-			const selectedDate = event.detail;
-			console.log('Selected Date:', selectedDate);
-			// Do something with the selected date
-		}}
-	/>
-	<button
-		on:click={() => {
-			post(endpoints.betNew, spookyPosts[0]);
-		}}>post test</button
-	>
+<AppContainer>
+	<div class="w-full text-white {appBorder} min-h-[400px] py-10">
+		<img src="calf.jpeg" alt="calf" class="mx-auto" />
+		<h1 class="text-lg mx-auto text-center pt-5">Welcome to the Golden Calf. Fortunes or turns?</h1>
+		<div class="flex justify-center">
+			<a href="/markets" class="text-prime2 underline text-center mx-auto w-[100%] text-2xl"
+				>Step in, uncover.</a
+			>
+		</div>
+	</div>
+</AppContainer>
 
-	<button
-		on:click={() => {
-			post(endpoints.betGet, {});
-		}}>get bet</button
-	>
-	<button
-		on:click={() => {
-			// get user
-		}}>get user</button
-	>
-</div>
+<!-- <button -->
+<!-- 	on:click={() => { -->
+<!-- 		post(endpoints.betNew, spookyPosts[0]); -->
+<!-- 	}}>post test</button -->
+<!-- > -->
+<!-- <button -->
+<!-- 	on:click={() => { -->
+<!-- 		post(endpoints.betGet, {}); -->
+<!-- 	}}>get bet</button -->
+<!-- > -->
+<!-- <button -->
+<!-- 	on:click={() => { -->
+<!-- 		// get user -->
+<!-- 	}}>get user</button -->
+<!-- > -->
 
 <style>
 	/* App Background */
 	:global(body) {
-		background-color: #000000; /* Deep Black */
+		background-color: #e8d5a2; /* Deep Black */
+		height: 100%;
+	}
+	:global(body.div) {
 	}
 </style>

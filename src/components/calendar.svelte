@@ -53,7 +53,12 @@
 
 	<!-- Custom date picker input -->
 	<label for="datepicker" class="block font-semibold">Select a date:</label>
-	<input type="datetime-local" id="datepicker" class="p-4 w-full" on:input={handleDateChange} />
+	<input
+		type="datetime-local"
+		id="datepicker"
+		class="p-4 w-full border bg-secondary1"
+		on:input={handleDateChange}
+	/>
 
 	<!-- Display the selected date -->
 	{#if selectedDate}
@@ -62,14 +67,6 @@
 </main>
 
 <style lang="postcss">
-	:global(#main) {
-		background-color: #daa520;
-		color: #8b4513;
-	}
-	input {
-		background: #fff8dc;
-	}
-
 	button {
 		background: #cd7f32; /* Bronze Color for Submit Button */
 		color: #fff8dc;
