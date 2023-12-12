@@ -1,12 +1,12 @@
 export const appBorder = 'border border-dashed border border-yellow-600';
 export const Page = {
-  Welcome: '/',
+  Welcome: 'welcome',
   Markets: {
-    Offering: '/markets',
-    Create: '/markets/create',
-    Dashboard: '/markets/dashboard',
+    Offering: 'markets',
+    Create: 'markets/create',
+    Dashboard: 'markets/dashboard',
   },
   Roadmap: {
-    Timeline: '/roadmap',
+    Timeline: 'roadmap',
   },
 } as const;

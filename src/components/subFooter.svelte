@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { Page, appBorder } from '$lib/util';
 
-	export const linksStore = writable([{ text: 'Welcome', href: '/' }]);
+	export const linksStore = writable([{ text: 'welcome', href: '/' }]);
 
 	interface Link {
 		text: string;
@@ -22,13 +22,13 @@
 			// Update links based on the current route
 			if (lastRoute === Page.Markets.Offering) {
 				linksStore.set([
-					{ text: 'Offerings', href: Page.Markets.Offering },
-					{ text: 'Create', href: Page.Markets.Create },
-					{ text: 'Dashboard', href: Page.Markets.Dashboard }
+					{ text: 'offerings', href: Page.Markets.Offering },
+					{ text: 'create', href: Page.Markets.Create },
+					{ text: 'dashboard', href: Page.Markets.Dashboard }
 				]);
 			}
 			if (lastRoute === Page.Roadmap.Timeline) {
-				linksStore.set([{ text: 'Timeline', href: Page.Roadmap.Timeline }]);
+				linksStore.set([{ text: 'timeline', href: Page.Roadmap.Timeline }]);
 			}
 			// if (lastRoute === Page.About) {
 			// 	linksStore.set([{ text: 'About', href: Page.About }]);

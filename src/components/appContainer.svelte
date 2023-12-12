@@ -9,7 +9,7 @@
 	<Header />
 
 	<div class="px-20">
-		<div class="w-full text-white {appBorder} justify-start flex flex-col">
+		<div class="w-full text-white {appBorder} rounded-md justify-start flex flex-col">
 			<div class="flex justify-around w-full">
 				<SubFooter />
 			</div>
