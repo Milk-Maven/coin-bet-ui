@@ -1,0 +1,9 @@
+
+	body {
+		background-color: #e8d5a2; /* Deep Black */
+		cursor: default;
+	}
+	a {
+		cursor: pointer;
+		outline: none; /* Remove focus outline */
+	}

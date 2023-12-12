@@ -1,9 +1,12 @@
-
-export const appBorder = 'border-2 border-dashed border-zinc-600';
-
-export enum Page {
-  Markets = '/markets',
-  Create = '/create',
-  About = '/about',
-  Contact = '/contact',
-}
+export const appBorder = 'border border-dashed border border-yellow-600';
+export const Page = {
+  Welcome: '/',
+  Markets: {
+    Offering: '/markets',
+    Create: '/markets/create',
+    Dashboard: '/markets/dashboard',
+  },
+  Roadmap: {
+    Timeline: '/roadmap',
+  },
+} as const;

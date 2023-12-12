@@ -1,34 +1,60 @@
+<!-- SubFooter.svelte -->
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
+	import { Page, appBorder } from '$lib/util';
+
+	export const linksStore = writable([{ text: 'Welcome', href: '/' }]);
+
 	interface Link {
 		text: string;
 		href: string;
 	}
 
-	export let links: Link[] = [];
-
-	import { createEventDispatcher, onMount } from 'svelte';
-	import { appBorder } from '$lib/util';
-	const dispatch = createEventDispatcher();
-	// TODO add fancy back nav and forward
+	let links: Link[] = [];
 	let lastRoute: string;
 
 	onMount(() => {
-		const unsubscribe = page.subscribe((value) => {
-			// Store the current route as the last route
+		const unsubscribePage = page.subscribe((value) => {
 			lastRoute = value.route.id ?? '';
+
+			// Update links based on the current route
+			if (lastRoute === Page.Markets.Offering) {
+				linksStore.set([
+					{ text: 'Offerings', href: Page.Markets.Offering },
+					{ text: 'create', href: Page.Markets.Create },
+					{ text: 'dashboard', href: Page.Markets.Dashboard }
+				]);
+			}
+			if (lastRoute === Page.Roadmap.Timeline) {
+				linksStore.set([{ text: 'Timeline', href: Page.Roadmap.Timeline }]);
+			}
+			// if (lastRoute === Page.About) {
+			// 	linksStore.set([{ text: 'About', href: Page.About }]);
+			// }
+			// if (lastRoute === Page.Contact) {
+			// 	linksStore.set([{ text: 'Contact', href: Page.Contact }]);
+			// }
+			// Add more conditions as needed
 		});
 
-		return unsubscribe;
+		const unsubscribeLinks = linksStore.subscribe((value) => {
+			links = value;
+		});
+
+		// Cleanup on component unmount
+		return () => {
+			unsubscribePage();
+			unsubscribeLinks();
+		};
 	});
 </script>
 
-<footer class="{appBorder} border-t-black border-t-4 z-10 bg-prime1 w-3/5 mb-10 rounded-b-md">
+<footer class="{appBorder} border-t-black border-t-4 z-10 bg-prime1 w-3/5 rounded-b-md mt-[-1px]">
 	<nav class="flex justify-around p-2 px-10 gap-20 min-h-[40px]">
-		<!-- <a class="text-xl text-secondary2" href={lastRoute}</a> -->
 		{#each links as { text, href }}
 			<a class="text-lg text-secondary2" {href}>{text}</a>
 		{/each}
 	</nav>
-	<!-- <a class="text-xl text-secondary2" {href}>></a> -->
 </footer>
