@@ -11,7 +11,7 @@
 </script>
 
 <AppContainer>
-	<div class="min-h-[80%] pt-20">
+	<div class="min-h-[80%]">
 		<img src="calf.jpeg" alt="calf" class="mx-auto outline-none cursor-default" />
 	</div>
 	<div class="min-h-[10%]">

@@ -23,8 +23,8 @@
 			if (lastRoute === Page.Markets.Offering) {
 				linksStore.set([
 					{ text: 'Offerings', href: Page.Markets.Offering },
-					{ text: 'create', href: Page.Markets.Create },
-					{ text: 'dashboard', href: Page.Markets.Dashboard }
+					{ text: 'Create', href: Page.Markets.Create },
+					{ text: 'Dashboard', href: Page.Markets.Dashboard }
 				]);
 			}
 			if (lastRoute === Page.Roadmap.Timeline) {

@@ -11,6 +11,8 @@ export default {
         prime1: "#000",
         prime2: "#ffd700",
         primet: "#fff",
+        primet2: "#CD7F32",
+
         borderColor: "#333333",
         //
         secondary1: "#1E1E1E",
