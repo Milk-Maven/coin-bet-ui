@@ -2,6 +2,7 @@
 <script lang="ts">
 	import { appBorder } from '$lib/util';
 	import { onMount, createEventDispatcher } from 'svelte';
+	export let label: string;
 
 	interface DateParams {
 		year: number;
@@ -9,13 +10,25 @@
 		day: number;
 		hour: number;
 		minute: number;
-		timeZone: string;
+		timeZone: number;
 	}
 
 	let selectedDateString: string;
 	let selectedDate: Date;
 
 	const dispatch = createEventDispatcher();
+
+	const createDateObject = ({ year, month, day, hour, minute, timeZone }: DateParams): Date => {
+		const date = new Date();
+		date.setFullYear(year);
+		date.setMonth(month - 1); // Months are zero-indexed
+		date.setDate(day);
+		date.setHours(hour);
+		date.setMinutes(minute);
+		// Set time zone offset
+		date.setMinutes(date.getMinutes() + date.getTimezoneOffset() + timeZone * 60);
+		return date;
+	};
 
 	onMount(() => {
 		const currentDate = new Date();
@@ -25,17 +38,11 @@
 			day: currentDate.getDate(),
 			hour: currentDate.getHours(),
 			minute: currentDate.getMinutes(),
-			timeZone: '-06:00' // Central Time (UTC-6:00)
+			timeZone: -6 // Central Time (UTC-6:00)
 		})
 			.toISOString()
 			.slice(0, -8);
 	});
-
-	function createDateObject(dateParams: DateParams): Date {
-		const { year, month, day, hour, minute, timeZone } = dateParams;
-		const dateString = `${year}-${month}-${day}T${hour}:${minute}:00.000${timeZone}`;
-		return new Date(dateString);
-	}
 
 	function handleDateChange(event: Event) {
 		const inputElement = event.target as HTMLInputElement;
@@ -50,14 +57,12 @@
 </script>
 
 <main class="w-full">
-	<h1>Date Picker Component</h1>
-
 	<!-- Custom date picker input -->
-	<label for="datepicker" class="block font-semibold mb-2">Select a date:</label>
+	<label for="datepicker" class="block mb-2 text-lg">{label}</label>
 	<input
 		type="datetime-local"
 		id="datepicker"
-		class="p-4 w-full border bg-secondary1 {appBorder}"
+		class="p-4 w-full border bg-secondary1 {appBorder} "
 		on:input={handleDateChange}
 	/>
 

@@ -1,5 +1,4 @@
 
-export { spookyPosts } from "./data";
 export const node = 'https://node.deso.org/api/v0/';
 export const api = 'http://localhost:3000/';
 export const betNewEndpoint = 'bet/new';

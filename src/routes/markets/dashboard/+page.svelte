@@ -4,5 +4,7 @@
 </script>
 
 <AppContainer>
-	<div class="top-0 flex justify-center w-full"></div>
+	<div class="text">
+		<h1 class="text-xl font-bold mb-10 text-center">participating offerings</h1>
+	</div>
 </AppContainer>
