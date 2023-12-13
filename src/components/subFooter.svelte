@@ -20,7 +20,7 @@
 			lastRoute = value.route.id ?? '';
 
 			// Update links based on the current route
-			if (lastRoute === '/' + Page.Markets.Offering) {
+			if (lastRoute === '' + Page.Markets.Offering) {
 				linksStore.set([
 					{ text: 'offerings', href: Page.Markets.Offering },
 					{ text: 'create', href: Page.Markets.Create },
