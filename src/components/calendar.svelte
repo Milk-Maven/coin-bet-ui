@@ -1,5 +1,6 @@
 <!-- src/components/YourDatePickerComponent.svelte -->
 <script lang="ts">
+	import { appBorder } from '$lib/util';
 	import { onMount, createEventDispatcher } from 'svelte';
 
 	interface DateParams {
@@ -48,15 +49,15 @@
 	}
 </script>
 
-<main class="">
+<main class="w-full">
 	<h1>Date Picker Component</h1>
 
 	<!-- Custom date picker input -->
-	<label for="datepicker" class="block font-semibold">Select a date:</label>
+	<label for="datepicker" class="block font-semibold mb-2">Select a date:</label>
 	<input
 		type="datetime-local"
 		id="datepicker"
-		class="p-4 w-full border bg-secondary1"
+		class="p-4 w-full border bg-secondary1 {appBorder}"
 		on:input={handleDateChange}
 	/>
 

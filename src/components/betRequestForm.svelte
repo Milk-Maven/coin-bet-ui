@@ -2,6 +2,7 @@
 	import YourDatePickerComponent from '../components/calendar.svelte';
 	import '../app.css';
 	import { createEventDispatcher } from 'svelte';
+	import { appBorder } from '$lib/util';
 
 	let greeting = '';
 	let eventDescription = '';
@@ -40,92 +41,89 @@
 	}
 </script>
 
-<main class="modal p-4 max-w-md mx-auto rounded-md shadow-md text-primet">
-	<h1 class="text-xl font-bold mb-4 text-center">Submit a bet</h1>
+<main class="w-3/5 mx-auto text-primet">
+	<h1 class="text-xl font-bold mb-10 text-center">Submit a bet</h1>
 
-	<YourDatePickerComponent
-		on:dateSelected={function handleDateSelected(event) {
-			const selectedDate = event.detail.date;
-			console.log('Selected Date:', selectedDate);
-			// Do something with the selected date
-		}}
-	/>
+	<div class="mb-10">
+		<YourDatePickerComponent
+			on:dateSelected={function handleDateSelected(event) {
+				const selectedDate = event.detail.date;
+				console.log('Selected Date:', selectedDate);
+				// Do something with the selected date
+			}}
+		/>
+	</div>
 	<div>
 		<!-- Text boxes for bet request properties -->
-		<div class="mb-3">
-			<label for="greeting" class="block font-semibold">Greeting:</label>
+		<div class="mb-10">
+			<label for="greeting" class="block font-semibold mb-2">Greeting:</label>
 			<textarea
 				id="greeting"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={greeting}
 			></textarea>
 		</div>
 
-		<div class="mb-3">
-			<label for="eventDescription" class="block font-semibold">Event Description:</label>
+		<div class="mb-10">
+			<label for="eventDescription" class="block font-semibold mb-2">Event Description:</label>
 			<textarea
 				id="eventDescription"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={eventDescription}
 			></textarea>
 		</div>
 
-		<div class="mb-3">
-			<label for="outcome1" class="block font-semibold">Outcome 1:</label>
+		<div class="mb-10">
+			<label for="outcome1" class="block font-semibold mb-2">Outcome 1:</label>
 			<textarea
 				id="outcome1"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={outcome1}
 			></textarea>
 		</div>
 
-		<div class="mb-3">
-			<label for="outcome2" class="block font-semibold">Outcome 2:</label>
+		<div class="mb-10">
+			<label for="outcome2" class="block font-semibold mb-2">Outcome 2:</label>
 			<textarea
 				id="outcome2"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={outcome2}
 			></textarea>
 		</div>
 
-		<div class="mb-3">
-			<label for="outcome3" class="block font-semibold">Outcome 3:</label>
+		<div class="mb-10">
+			<label for="outcome3" class="block font-semibold mb-2">Outcome 3:</label>
 			<textarea
 				id="outcome3"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={outcome3}
 			></textarea>
 		</div>
 
-		<div class="mb-3">
-			<label for="outcome4" class="block font-semibold">Outcome 4:</label>
+		<div class="mb-10">
+			<label for="outcome4" class="block font-semibold mb-2">Outcome 4:</label>
 			<textarea
 				id="outcome4"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={outcome4}
 			></textarea>
 		</div>
-		<div class="mb-3">
-			<label for="explainer" class="block font-semibold">Explainer:</label>
+		<div class="mb-10">
+			<label for="explainer" class="block font-semibold mb-2">Explainer:</label>
 			<textarea
 				id="explainer"
-				class="w-full p-2 border rounded-md bg-secondary1"
+				class="w-full p-2 border rounded-md bg-secondary1 {appBorder}"
 				bind:value={explainer}
 			></textarea>
 		</div>
 		<!-- Button to submit the form and emit the betRequestCreated event -->
 		<div class="flex justify-center">
-			<button class="p-2 hover:bg-secondary1" on:click={handleSubmit}>Create Bet Request</button>
+			<button class="{appBorder} p-5 bg-secondary1 rounded-lg" on:click={handleSubmit}
+				>Create Bet Request</button
+			>
 		</div>
 	</div>
 </main>
 
 <style lang="postcss">
-	textarea {
-	}
-
-	button {
-	}
-	.modal {
-	}
 </style>
