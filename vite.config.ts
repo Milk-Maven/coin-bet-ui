@@ -9,5 +9,5 @@ export default defineConfig({
         include: ['just-throttle', 'dayjs']
       }
     }
-  }
+  },
 });

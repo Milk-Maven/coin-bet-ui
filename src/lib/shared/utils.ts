@@ -1,8 +1,7 @@
-import type { PostEntryResponse } from "deso-protocol";
 
 export const endpoints = {
-  betNew: 'bet/new',
-  betGet: 'bet/get'
+  offeringCreate: 'offering/create',
+  offeringGet: 'offering/get'
 }
 
 export function checkCondition(condition: boolean, errorMessage: string): void {
@@ -11,4 +10,3 @@ export function checkCondition(condition: boolean, errorMessage: string): void {
   }
 }
 
-export type BetGetRequest = Pick<PostEntryResponse, 'PostHashHex' | 'PostExtraData' | 'PosterPublicKeyBase58Check'>

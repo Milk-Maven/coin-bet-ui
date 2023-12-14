@@ -3,6 +3,7 @@
 	import { appBorder } from '$lib/util';
 	import { onMount, createEventDispatcher } from 'svelte';
 	export let label: string;
+	export let errorMessage: string;
 
 	interface DateParams {
 		year: number;
@@ -14,7 +15,7 @@
 	}
 
 	let selectedDateString: string;
-	let selectedDate: Date;
+	let selectedDate: string;
 
 	const dispatch = createEventDispatcher();
 
@@ -31,26 +32,24 @@
 	};
 
 	onMount(() => {
-		const currentDate = new Date();
-		selectedDateString = createDateObject({
-			year: currentDate.getFullYear(),
-			month: currentDate.getMonth() + 1, // Months are zero-indexed
-			day: currentDate.getDate(),
-			hour: currentDate.getHours(),
-			minute: currentDate.getMinutes(),
-			timeZone: -6 // Central Time (UTC-6:00)
-		})
-			.toISOString()
-			.slice(0, -8);
+		// const currentDate = new Date();
+		// selectedDateString = createDateObject({
+		// 	year: currentDate.getFullYear(),
+		// 	month: currentDate.getMonth() + 1, // Months are zero-indexed
+		// 	day: currentDate.getDate(),
+		// 	hour: currentDate.getHours(),
+		// 	minute: currentDate.getMinutes(),
+		// 	timeZone: -6 // Central Time (UTC-6:00)
+		// })
+		// 	.toISOString()
+		// 	.slice(0, -8);
 	});
 
 	function handleDateChange(event: Event) {
 		const inputElement = event.target as HTMLInputElement;
 		selectedDateString = inputElement.value;
-
 		// Parse the selected date string and update the state
-		selectedDate = new Date(selectedDateString);
-
+		selectedDate = new Date(selectedDateString).toISOString();
 		// Emit the dateSelected event with the selected date
 		dispatch('dateSelected', { date: selectedDate });
 	}
@@ -58,18 +57,20 @@
 
 <main class="w-full">
 	<!-- Custom date picker input -->
-	<label for="datepicker" class="block mb-2 text-lg">{label}</label>
+	<label for="datepicker" class="block mb-2 text-lg"
+		>{label} (CT)
+		{#if errorMessage}
+			<span class="ml-2 mb-2 text-red-500 text-xs">* {errorMessage}</span>
+		{/if}
+	</label>
 	<input
 		type="datetime-local"
 		id="datepicker"
-		class="p-4 w-full border bg-secondary1 {appBorder} "
+		class="p-4 mb-10 w-full border bg-secondary1 {appBorder} "
 		on:input={handleDateChange}
 	/>
 
 	<!-- Display the selected date -->
-	{#if selectedDate}
-		<p>Selected Date: {selectedDate.toString()}</p>
-	{/if}
 </main>
 
 <style lang="postcss">

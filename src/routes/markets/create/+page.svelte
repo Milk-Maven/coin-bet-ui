@@ -1,9 +1,9 @@
 <script>
+	import OfferingRequestForm from '../../../components/OfferingRequestForm.svelte';
 	import AppContainer from '../../../components/appContainer.svelte';
-	import BetRequestForm from '../../../components/betRequestForm.svelte';
 	import '../../page.css';
 </script>
 
 <AppContainer>
-	<BetRequestForm />
+	<OfferingRequestForm />
 </AppContainer>

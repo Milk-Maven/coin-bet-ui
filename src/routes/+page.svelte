@@ -1,5 +1,4 @@
 <script lang="ts">
-	import BetRequestForm from '../components/betRequestForm.svelte';
 	import AppContainer from '../components/appContainer.svelte';
 	import Footer from '../components/footer.svelte';
 	import { spookyPosts } from '$lib/data';

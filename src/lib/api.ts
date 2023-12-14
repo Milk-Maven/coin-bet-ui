@@ -1,13 +1,13 @@
 
-export const node = 'https://node.deso.org/api/v0/';
-export const api = 'http://localhost:3000/';
-export const betNewEndpoint = 'bet/new';
+// export const node = 'https://node.deso.org/api/v0/';
+import { endpoints } from './shared/utils';
+import type { OfferringCreateRequest } from './shared/validators';
 
 // Make an HTTP POST request
 // TODO turn this api into array that returns request function response function, request model, response model, per endpoint
 
 export async function post(endpoint: string, payload: any = {}) {
-  let response = await fetch(`${api}${endpoint}`, {
+  let response = await fetch(`${'localhost:3000/'}${endpoint}`, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     // @ts-ignore
@@ -25,12 +25,6 @@ export async function post(endpoint: string, payload: any = {}) {
   // @ts-ignore
   return response.result.data;
 }
-
-export async function get(endpoint: string, data?: any) {
-  // return
-  // const params = data ? `?input=${encodeURI(JSON.stringify(data))}` : '';
-  // let response = await fetch(`${baseUrl}/${endpoint}${params}`);
-  // response = await response.json();
-  // @ts-ignore
-  // return response.result.data;
+export const offeringCreate = async (payload: OfferringCreateRequest) => {
+  await post(endpoints.offeringCreate, payload)
 }
