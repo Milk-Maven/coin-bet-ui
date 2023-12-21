@@ -7,7 +7,8 @@ import type { OfferringCreateRequest } from './shared/validators';
 // TODO turn this api into array that returns request function response function, request model, response model, per endpoint
 
 export async function post(endpoint: string, payload: any = {}) {
-  let response = await fetch(`${'localhost:3000/'}${endpoint}`, {
+  const api = 'http://localhost:3000/'
+  let response = await fetch(`${api}${endpoint}`, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     // @ts-ignore
@@ -26,5 +27,9 @@ export async function post(endpoint: string, payload: any = {}) {
   return response.result.data;
 }
 export const offeringCreate = async (payload: OfferringCreateRequest) => {
-  await post(endpoints.offeringCreate, payload)
+  try {
+    await post(endpoints.offeringCreate, payload)
+  } catch (e) {
+    console.log(e)
+  }
 }

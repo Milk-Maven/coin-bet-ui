@@ -25,19 +25,3 @@
 	</div>
 	<!-- <div class="flex justify-center flex-col flex-1 min-h-max"> -->
 </AppContainer>
-
-<!-- <button -->
-<!-- 	on:click={() => { -->
-<!-- 		post(endpoints.betNew, spookyPosts[0]); -->
-<!-- 	}}>post test</button -->
-<!-- > -->
-<!-- <button -->
-<!-- 	on:click={() => { -->
-<!-- 		post(endpoints.betGet, {}); -->
-<!-- 	}}>get bet</button -->
-<!-- > -->
-<!-- <button -->
-<!-- 	on:click={() => { -->
-<!-- 		// get user -->
-<!-- 	}}>get user</button -->
-<!-- > -->

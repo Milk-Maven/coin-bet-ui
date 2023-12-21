@@ -17,7 +17,6 @@
 
 	let selectedDateString: string;
 	let selectedDate: string;
-
 	const dispatch = createEventDispatcher();
 
 	const createDateObject = ({ year, month, day, hour, minute, timeZone }: DateParams): Date => {
@@ -32,6 +31,16 @@
 		return date;
 	};
 
+	const currentDate = new Date();
+	const futureDate = new Date(
+		currentDate.getFullYear() + 5,
+		currentDate.getMonth(),
+		currentDate.getDate(),
+		12, // Set the hour to 12 (noon) in CT
+		0, // Set the minute to 0
+		0, // Set the second to 0
+		0 // Set the millisecond to 0
+	);
 	function handleDateChange(event: Event) {
 		const inputElement = event.target as HTMLInputElement;
 		selectedDateString = inputElement.value;
@@ -45,7 +54,7 @@
 <main class="w-full">
 	<!-- Custom date picker input -->
 	<label for="datepicker" class="block mb-2 text-lg">
-		{label} (CT) *
+		{label} *
 		{#if errorMessage}
 			<span class="ml-2 mb-2 text-red-500 text-xs">* {errorMessage}</span>
 		{/if}
@@ -56,11 +65,9 @@
 			id="datepicker"
 			class="p-4 mb-10 w-full border bg-secondary1 {appBorder} "
 			on:input={handleDateChange}
+			min={currentDate.toISOString()}
+			max={futureDate.toISOString()}
 		/>
-		<!-- Add the following style to change the color of the calendar icon -->
-		<!-- Add the following style to change the color of the calendar icon -->
-		<!-- Add the following style to change the color of the calendar icon -->
-		<!-- Add the following style to change the color of the calendar icon -->
 		<style>
 			#datepicker::before {
 				color: white; /* Change the color to white or any other color */

@@ -4,14 +4,14 @@
 	import { createEventDispatcher } from 'svelte';
 	import { appBorder } from '$lib/util';
 	import { offeringCreateValidation } from '$lib/shared/validators';
-	import { post } from '$lib/api';
-
+	import { offeringCreate, post } from '$lib/api';
+	import { endpoints } from '$lib/shared/utils';
 	let eventDescription = '';
 	let outcome1 = '';
 	let outcome2 = '';
 	let outcome3 = '';
 	let outcome4 = '';
-	let startDate = '';
+	let startDate = new Date().toISOString();
 	let endDate = '';
 
 	let eventDescriptionError = '';
@@ -19,25 +19,24 @@
 	let outcome2Error = '';
 	let outcome3Error = '';
 	let outcome4Error = '';
-	let startDateError = '';
 	let endDateError = '';
 
 	const dispatch = createEventDispatcher();
 
 	function handleSubmit() {
+		resetErrors();
+
 		const betRequest = {
 			event_description: eventDescription,
-			outcomes: [outcome1, outcome2, outcome3, outcome4],
+			outcomes: [outcome1, outcome2, outcome3, outcome4].filter((o) => o !== ''),
 			startDate,
 			endDate
 		};
 		const validationResult = offeringCreateValidation.safeParse(betRequest);
-		console.log(betRequest);
 		if (!validationResult.success) {
 			// Display validation errors
 			const validationErrors = validationResult.error.flatten();
 			endDateError = validationErrors.fieldErrors.endDate?.[0] ?? '';
-			startDateError = validationErrors.fieldErrors.startDate?.[0] ?? '';
 			eventDescriptionError = validationErrors.fieldErrors.event_description?.[0] ?? '';
 			outcome1Error = validationErrors.fieldErrors.outcomes?.[0] ?? '';
 			outcome2Error = validationErrors.fieldErrors.outcomes?.[0] ?? '';
@@ -45,16 +44,12 @@
 			outcome4Error = validationErrors.fieldErrors.outcomes?.[0] ?? '';
 		} else {
 			// Reset error messages
-			resetErrors();
-			// post('');
-			// Emit the betRequestCreated event with the created object
-			// submitOfferingRequest(betRequest);
-			// Clear the form fields
-			resetForm();
+			offeringCreate(validationResult.data).then((res) => {
+				console.log(res);
+				resetForm();
+			});
 		}
 	}
-
-	const submitOfferingRequest = () => {};
 
 	function resetForm() {
 		eventDescription = '';
@@ -72,23 +67,12 @@
 		outcome2Error = '';
 		outcome3Error = '';
 		outcome4Error = '';
-		startDateError = '';
 		endDateError = '';
 	}
 </script>
 
 <main class="w-3/5 mx-auto text-primet">
-	<h1 class="text-xl mb-10 text-center">submit a bet</h1>
-
-	<YourDatePickerComponent
-		label={'start date'}
-		errorMessage={startDateError}
-		on:dateSelected={function handleDateSelected(event) {
-			const selectedDate = event.detail.date;
-			console.log('Selected Date:', selectedDate);
-			startDate = selectedDate;
-		}}
-	/>
+	<h1 class="text-xl mb-10 text-center">make an offering</h1>
 	<YourDatePickerComponent
 		errorMessage={endDateError}
 		label={'end date'}
@@ -145,9 +129,9 @@
 		<div class="mb-10">
 			<label for="outcome3" class="block text-lg mb-2">
 				outcome 3
-				{#if outcome3Error}
-					<span class="ml-2 mb-2 text-red-500 text-xs">* {outcome3Error}</span>
-				{/if}
+				<!-- {#if outcome3Error} -->
+				<!-- 	<span class="ml-2 mb-2 text-red-500 text-xs">* {outcome3Error}</span> -->
+				<!-- {/if} -->
 			</label>
 			<textarea
 				id="outcome3"
@@ -159,9 +143,9 @@
 		<div class="mb-10">
 			<label for="outcome4" class="block text-lg mb-2"
 				>outcome 4
-				{#if outcome4Error}
-					<span class="ml-2 mb-2 text-red-500 text-xs">* {outcome4Error}</span>
-				{/if}
+				<!-- {#if outcome4Error} -->
+				<!-- 	<span class="ml-2 mb-2 text-red-500 text-xs">* {outcome4Error}</span> -->
+				<!-- {/if} -->
 			</label>
 			<textarea
 				id="outcome4"
@@ -175,8 +159,8 @@
 		<!-- Button to submit the form and emit the betRequestCreated event -->
 		<div class="flex justify-center">
 			<button class="{appBorder} p-5 bg-secondary1 rounded-lg" on:click={handleSubmit}
-				>create bet request</button
-			>
+				>create offering
+			</button>
 		</div>
 	</div>
 </main>

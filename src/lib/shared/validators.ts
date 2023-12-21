@@ -4,11 +4,19 @@ import { z } from 'zod';
 
 export const offeringCreateValidation = z.object({
   event_description: z.string().min(10).refine((data) => data !== '', { message: 'Event description is required' }),
-  outcomes: z
-    .array(z.string().min(1))
-    .refine((data) => data.length >= 2, { message: 'At least two outcomes are required' }),
-  startDate: z.string().min(1).refine((data) => data !== '', { message: 'Start date is required' }),
-  endDate: z.string().min(1).refine((data) => data !== '', { message: 'End date is required' }),
+  outcomes: z.array(
+    z.string()
+  ).refine((data) => {
+    console.log(data)
+    return data[0].length && data[1].length
+  }, {
+
+    message: 'At least two outcomes are required',
+  }),
+  endDate: z.string().refine((data) => {
+    // Check if the value is a valid ISO string
+    return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3}Z?)?$/.test(data);
+  }, { message: 'Invalid end date format' }),
 });
 
 // Example usage
