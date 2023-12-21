@@ -25,7 +25,6 @@
 
 	function handleSubmit() {
 		resetErrors();
-
 		const betRequest = {
 			event_description: eventDescription,
 			outcomes: [outcome1, outcome2, outcome3, outcome4].filter((o) => o !== ''),
