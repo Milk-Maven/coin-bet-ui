@@ -32,6 +32,7 @@
 			endDate
 		};
 		const validationResult = offeringCreateValidation.safeParse(betRequest);
+		console.log(betRequest);
 		if (!validationResult.success) {
 			// Display validation errors
 			const validationErrors = validationResult.error.flatten();
@@ -45,7 +46,7 @@
 		} else {
 			// Reset error messages
 			resetErrors();
-			post('');
+			// post('');
 			// Emit the betRequestCreated event with the created object
 			// submitOfferingRequest(betRequest);
 			// Clear the form fields
@@ -100,9 +101,9 @@
 	<div>
 		<div class="mb-10">
 			<label for="eventDescription" class="block text-lg mb-2">
-				event description
+				event description *
 				{#if eventDescriptionError}
-					<span class="ml-2 mb-2 text-red-500 text-xs">* {eventDescriptionError}</span>
+					<span class="ml-2 mb-2 text-red-500 text-xs"> {eventDescriptionError}</span>
 				{/if}
 			</label>
 			<textarea
@@ -115,9 +116,9 @@
 		</div>
 		<div class="mb-10">
 			<label for="outcome1" class="block text-lg mb-2">
-				outcome 1
+				outcome 1 *
 				{#if outcome1Error}
-					<span class="ml-2 mb-2 text-red-500 text-xs">* {outcome1Error}</span>
+					<span class="ml-2 mb-2 text-red-500 text-xs"> {outcome1Error}</span>
 				{/if}
 			</label>
 			<textarea
@@ -129,9 +130,9 @@
 
 		<div class="mb-10">
 			<label for="outcome2" class="block text-lg mb-2">
-				outcome 2
+				outcome 2 *
 				{#if outcome2Error}
-					<span class="ml-2 mb-2 text-red-500 text-xs">* {outcome2Error}</span>
+					<span class="ml-2 mb-2 text-red-500 text-xs"> {outcome2Error}</span>
 				{/if}
 			</label>
 			<textarea

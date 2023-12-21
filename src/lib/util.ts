@@ -1,4 +1,4 @@
-export const appBorder = 'border border-dashed border border-yellow-600';
+export const appBorder = 'border border-dashed border border-borderColor';
 export const Page = {
   Welcome: 'welcome',
   Markets: {

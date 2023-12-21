@@ -15,9 +15,11 @@
 	</div>
 	<div class="min-h-[10%]">
 		<div class="flex justify-center flex-col">
-			<h1 class="text-lg mx-auto text-center">Welcome to the Golden Calf. Fortunes or turns?</h1>
-			<a href="/markets" class="text-prime2 underline text-center mx-auto w-[100%] text-2xl"
-				>Step in, uncover.</a
+			<h1 class="text-lg mx-auto text-center text-primet2">
+				Welcome to the Golden Calf. Fortunes or turns?
+			</h1>
+			<a href="/markets" class="text-primet text-center mx-auto w-[100%] text-lg underline"
+				>Step in uncover</a
 			>
 		</div>
 	</div>

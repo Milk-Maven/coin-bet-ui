@@ -1,7 +1,8 @@
 <!-- src/components/YourDatePickerComponent.svelte -->
 <script lang="ts">
 	import { appBorder } from '$lib/util';
-	import { onMount, createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
+
 	export let label: string;
 	export let errorMessage: string;
 
@@ -31,20 +32,6 @@
 		return date;
 	};
 
-	onMount(() => {
-		// const currentDate = new Date();
-		// selectedDateString = createDateObject({
-		// 	year: currentDate.getFullYear(),
-		// 	month: currentDate.getMonth() + 1, // Months are zero-indexed
-		// 	day: currentDate.getDate(),
-		// 	hour: currentDate.getHours(),
-		// 	minute: currentDate.getMinutes(),
-		// 	timeZone: -6 // Central Time (UTC-6:00)
-		// })
-		// 	.toISOString()
-		// 	.slice(0, -8);
-	});
-
 	function handleDateChange(event: Event) {
 		const inputElement = event.target as HTMLInputElement;
 		selectedDateString = inputElement.value;
@@ -57,18 +44,29 @@
 
 <main class="w-full">
 	<!-- Custom date picker input -->
-	<label for="datepicker" class="block mb-2 text-lg"
-		>{label} (CT)
+	<label for="datepicker" class="block mb-2 text-lg">
+		{label} (CT) *
 		{#if errorMessage}
 			<span class="ml-2 mb-2 text-red-500 text-xs">* {errorMessage}</span>
 		{/if}
 	</label>
-	<input
-		type="datetime-local"
-		id="datepicker"
-		class="p-4 mb-10 w-full border bg-secondary1 {appBorder} "
-		on:input={handleDateChange}
-	/>
+	<div class="relative">
+		<input
+			type="datetime-local"
+			id="datepicker"
+			class="p-4 mb-10 w-full border bg-secondary1 {appBorder} "
+			on:input={handleDateChange}
+		/>
+		<!-- Add the following style to change the color of the calendar icon -->
+		<!-- Add the following style to change the color of the calendar icon -->
+		<!-- Add the following style to change the color of the calendar icon -->
+		<!-- Add the following style to change the color of the calendar icon -->
+		<style>
+			#datepicker::before {
+				color: white; /* Change the color to white or any other color */
+			}
+		</style>
+	</div>
 
 	<!-- Display the selected date -->
 </main>
@@ -81,5 +79,12 @@
 	.modal {
 		background: #8b4513; /* Grayish Dialog Background */
 		/* Add additional styling for padding, border-radius, etc. */
+	}
+	::-webkit-calendar-picker-indicator {
+		filter: invert(1);
+	}
+
+	::-webkit-calendar-picker-indicator:hover {
+		cursor: pointer;
 	}
 </style>

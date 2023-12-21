@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { Page, appBorder } from '$lib/util';
 
-	export const linksStore = writable([{ text: 'welcome', href: '/' }]);
+	export const linksStore = writable([{ text: 'The Golden Calf', href: '/' }]);
 
 	interface Link {
 		text: string;
@@ -20,8 +20,6 @@
 			lastRoute = value.route.id ?? '';
 
 			// Update links based on the current route
-			console.log(lastRoute);
-			console.log(lastRoute);
 			if (
 				lastRoute === '' + Page.Markets.Offering ||
 				lastRoute === '' + Page.Markets.Create ||
@@ -60,7 +58,7 @@
 <footer class="{appBorder} border-t-black border-t-4 z-10 bg-prime1 w-3/5 rounded-b-md mt-[-1px]">
 	<nav class="flex justify-around p-2 px-10 gap-20 min-h-[40px]">
 		{#each links as { text, href }}
-			<a class="text-lg text-secondary2" {href}>{text}</a>
+			<a class="text-lg text-primet" {href}>{text}</a>
 		{/each}
 	</nav>
 </footer>

@@ -9,11 +9,11 @@ export default {
       },
       colors: {
         prime1: "#000",
-        prime2: "#ffd700",
-        primet: "#fff",
-        primet2: "#CD7F32",
-
-        borderColor: "#333333",
+        prime2: "#6A2204",
+        primet: "#E1860D",
+        primet2: "#fff",
+        borderColor: "#E72A43",
+        // borderColor: "#913F0E",
         //
         secondary1: "#1E1E1E",
         secondary2: "#CFB53B",
