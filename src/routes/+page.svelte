@@ -1,11 +1,5 @@
 <script lang="ts">
 	import AppContainer from '../components/appContainer.svelte';
-	import Footer from '../components/footer.svelte';
-	import { spookyPosts } from '$lib/data';
-	import { post } from '$lib/api';
-	import { endpoints } from '$lib/shared/utils';
-	import { appBorder } from '$lib/util';
-	import SubFooter from '../components/subFooter.svelte';
 	import './page.css';
 </script>
 
