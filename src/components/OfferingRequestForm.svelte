@@ -73,7 +73,6 @@
 		label={'end date'}
 		on:dateSelected={function handleDateSelected(event) {
 			const selectedDate = event.detail.date;
-			console.log('Selected Date:', selectedDate);
 			endDate = selectedDate;
 		}}
 	/>
