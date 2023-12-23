@@ -26,7 +26,6 @@
 								<p class="{appBorder} rounded-md py-2 px-3 text-primet">
 									{offering.PostExtraData.option3}
 								</p>
-
 								<p class="{appBorder} rounded-md py-2 px-3 text-primet">
 									{offering.PostExtraData.option4}
 								</p>
