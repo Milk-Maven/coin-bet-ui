@@ -1,11 +1,9 @@
 <script lang="ts">
-	import YourDatePickerComponent from '../components/calendar.svelte';
-	import '../app.css';
-	import { createEventDispatcher } from 'svelte';
-	import { appBorder } from '$lib/util';
+	import { offeringCreate } from '$lib/api';
 	import { offeringCreateValidation } from '$lib/shared/validators';
-	import { offeringCreate, post } from '$lib/api';
-	import { endpoints } from '$lib/shared/utils';
+	import { appBorder } from '$lib/util';
+	import '../app.css';
+	import YourDatePickerComponent from '../components/calendar.svelte';
 	let eventDescription = '';
 	let outcome1 = '';
 	let outcome2 = '';
@@ -20,8 +18,6 @@
 	let outcome3Error = '';
 	let outcome4Error = '';
 	let endDateError = '';
-
-	const dispatch = createEventDispatcher();
 
 	function handleSubmit() {
 		resetErrors();

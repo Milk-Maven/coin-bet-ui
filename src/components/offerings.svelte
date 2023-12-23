@@ -2,6 +2,7 @@
 	import { appBorder } from '$lib/util';
 	import type { PostEntryResponse } from 'deso-protocol';
 	export let offerings: PostEntryResponse[];
+	import { GOLDEN_CALF_LOGO } from '$lib/util';
 </script>
 
 <main>
@@ -9,7 +10,7 @@
 		<div class="{appBorder} rounded-md p-5 py-10 m-10 mt-0">
 			<div class="flex justify-start flex-col h-[100%]">
 				<div class="flex justify-between">
-					<img class="max-h-[70px] my-auto" src="calf.jpeg" alt="calf" />
+					<img class="max-h-[70px] my-auto" src={GOLDEN_CALF_LOGO} alt="calf" />
 					<div>
 						<div class="text-center">
 							<h1 class="text-lg my-auto">{offering.Body}</h1>
@@ -35,7 +36,7 @@
 							<!-- </div> -->
 						</div>
 					</div>
-					<img class="max-h-[70px] my-auto" src="calf.jpeg" alt="calf" />
+					<img class="max-h-[70px] my-auto" src={GOLDEN_CALF_LOGO} alt="calf" />
 				</div>
 			</div>
 			<!-- <div class="flex justify-end"> -->

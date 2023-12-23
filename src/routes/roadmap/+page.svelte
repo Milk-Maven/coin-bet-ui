@@ -8,11 +8,9 @@
 
     ## Version 1.0 (MVP)
 
-    - **Feature 1:** participate in markts 
+    - **Feature 1:** participate in markets 
     - **Feature 2:** display offering data 
     - **Feature 3:** offerings appear in feed
-
-    ![Golden Calf](/calf.jpeg)
 
     ## Version 2.0 (Upcoming)
 

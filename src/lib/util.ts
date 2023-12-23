@@ -10,3 +10,4 @@ export const Page = {
     Timeline: 'roadmap',
   },
 } as const;
+export const GOLDEN_CALF_LOGO = 'calf.png'

@@ -16,7 +16,7 @@ export type PartialWithRequiredFields<T, K extends keyof T> = Partial<T> & Pick<
 export type OfferingExtraDateRequest = {
   endDate: string,
   totalOptions: string
-  offering: 'true'
+  isOffering: 'true'
 };
 
 export type OfferingOptionsExtraDataRequest = {

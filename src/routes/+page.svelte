@@ -1,11 +1,12 @@
 <script lang="ts">
 	import AppContainer from '../components/appContainer.svelte';
 	import './page.css';
+	import { GOLDEN_CALF_LOGO } from '$lib/util';
 </script>
 
 <AppContainer>
 	<div class="min-h-[80%]">
-		<img src="calf.jpeg" alt="calf" class="mx-auto outline-none cursor-default" />
+		<img src={GOLDEN_CALF_LOGO} alt="calf" class="mx-auto outline-none cursor-default" />
 	</div>
 	<div class="min-h-[10%]">
 		<div class="flex justify-center flex-col">
