@@ -8,7 +8,7 @@ export const offeringCreateValidation = z.object({
     z.string()
   ).refine((data) => {
     console.log(data)
-    return data[0].length && data[1].length
+    return data[0]?.length && data[1]?.length
   }, {
 
     message: 'At least two outcomes are required',

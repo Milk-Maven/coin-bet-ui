@@ -2,8 +2,10 @@
 	import { offeringCreate } from '$lib/api';
 	import { offeringCreateValidation } from '$lib/shared/validators';
 	import { appBorder } from '$lib/util';
+	import { requireLogin } from '$lib/deso';
 	import '../app.css';
 	import YourDatePickerComponent from '../components/calendar.svelte';
+	import { app } from '$lib/state';
 	let eventDescription = '';
 	let outcome1 = '';
 	let outcome2 = '';
@@ -19,13 +21,21 @@
 	let outcome4Error = '';
 	let endDateError = '';
 
-	function handleSubmit() {
+	async function handleSubmit() {
+		if (!$app.publicKey) {
+			const res = await requireLogin();
+			if (!res) {
+				alert('login required to submit an offering');
+			}
+		}
+
 		resetErrors();
 		const betRequest = {
 			event_description: eventDescription,
 			outcomes: [outcome1, outcome2, outcome3, outcome4].filter((o) => o !== ''),
 			startDate,
-			endDate
+			endDate,
+			publicKey: $app.publicKey
 		};
 		const validationResult = offeringCreateValidation.safeParse(betRequest);
 		if (!validationResult.success) {

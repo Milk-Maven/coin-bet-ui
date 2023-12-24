@@ -2,6 +2,11 @@
 	import AppContainer from '../components/appContainer.svelte';
 	import './page.css';
 	import { GOLDEN_CALF_LOGO, Page } from '$lib/util';
+	import { app } from '$lib/state';
+	import * as deso from 'deso-protocol';
+	deso.identity.subscribe((notification) => {
+		app.set({ publicKey: notification.currentUser?.publicKey ?? '' });
+	});
 </script>
 
 <AppContainer containerClass=" flex justify-center flex-col">
