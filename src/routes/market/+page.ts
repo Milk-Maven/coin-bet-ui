@@ -1,12 +1,12 @@
 import * as deso from "deso-protocol"
 import { PUB_KEY } from '$lib/shared/utils'
 import type { OfferingExtraDateRequest, OfferingOptionsExtraDataRequest } from '$lib/shared/utils'
-export const load = () => {
+export const load = async () => {
   const fetchOfferings = async () => {
     const res = await deso.getPostsForUser({ PublicKeyBase58Check: PUB_KEY, "NumToFetch": 20, })
     return orderByActivity(res.Posts ?? [])
   }
-  return { offerings: fetchOfferings() }
+  return { offerings: await fetchOfferings() }
 }
 const orderByActivity = (posts: deso.PostEntryResponse[]) => {
   // highest score goes first
@@ -20,6 +20,4 @@ const orderByActivity = (posts: deso.PostEntryResponse[]) => {
     // ending soon 1
     return p
   })
-
-
 }

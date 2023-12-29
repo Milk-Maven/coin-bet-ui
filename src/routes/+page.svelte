@@ -1,28 +1,60 @@
 <script lang="ts">
-	import AppContainer from '../components/appContainer.svelte';
-	import './page.css';
-	import { GOLDEN_CALF_LOGO, Page } from '$lib/util';
-	import { app } from '$lib/state';
-	import * as deso from 'deso-protocol';
-	// deso.identity.subscribe((notification) => {
-	// 	app.set({ publicKey: notification.currentUser?.publicKey ?? '' });
-	// });
+  import { Page } from "$lib/util";
 </script>
 
-<AppContainer containerClass=" flex justify-center flex-col">
-	<img src={GOLDEN_CALF_LOGO} alt="calf" class="mx-auto outline-none cursor-default max-w-[80%]" />
-	<div class="min-h-[10%]">
-		<div class="flex justify-center flex-col">
-			<h1 class="text-lg mx-auto text-center text-primet2">
-				Welcome to the Golden Calf. Fortunes or turns?
-			</h1>
-			<a
-				href={Page.Markets.Offering}
-				class="text-primet text-center mx-auto w-[100%] text-lg underline"
-			>
-				Step in uncover</a
-			>
-		</div>
-	</div>
-	<!-- <div class="flex justify-center flex-col flex-1 min-h-max"> -->
-</AppContainer>
+<div class="container h-full mx-auto flex justify-center items-center">
+  <div class="space-y-10 text-center flex flex-col items-center">
+    <!-- Animated Logo -->
+    <img src="calf.png" class="h-[500px]" />
+    <!-- / -->
+    <div class="flex justify-center space-x-2">
+      <a
+        class="btn variant-soft-primary"
+        href={Page.Markets.Offering}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Fortunes or Misfortunes?
+      </a>
+    </div>
+    <!-- <div class="space-y-2"> -->
+    <!--   <p>Try editing the following:</p> -->
+    <!--   <p><code class="code">/src/routes/+layout.svelte</code></p> -->
+    <!--   <p><code class="code">/src/routes/+page.svelte</code></p> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+<style lang="postcss">
+  figure {
+    @apply flex relative flex-col;
+  }
+  figure svg,
+  .img-bg {
+    @apply w-64 h-64 md:w-80 md:h-80;
+  }
+  .img-bg {
+    @apply absolute z-[-1] rounded-full blur-[50px] transition-all;
+    animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite,
+      glow 5s linear infinite;
+  }
+  @keyframes glow {
+    0% {
+      @apply bg-primary-400/50;
+    }
+    33% {
+      @apply bg-secondary-400/50;
+    }
+    66% {
+      @apply bg-tertiary-400/50;
+    }
+    100% {
+      @apply bg-primary-400/50;
+    }
+  }
+  @keyframes pulse {
+    50% {
+      transform: scale(1.5);
+    }
+  }
+</style>

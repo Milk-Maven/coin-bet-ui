@@ -2,7 +2,7 @@ export const appBorder = 'border border-dashed border border-borderColor';
 export const Page = {
   Welcome: 'welcome',
   Markets: {
-    Offering: '/markets',
+    Offering: '/market',
     Create: '/markets/create',
     Dashboard: '/markets/dashboard',
   },
