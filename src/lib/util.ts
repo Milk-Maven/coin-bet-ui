@@ -3,8 +3,8 @@ export const Page = {
   Welcome: 'welcome',
   Markets: {
     Offering: '/market',
-    Create: '/markets/create',
-    Dashboard: '/markets/dashboard',
+    Create: '/market/create',
+    Dashboard: '/market/dashboard',
   },
   Roadmap: {
     Timeline: 'roadmap',
