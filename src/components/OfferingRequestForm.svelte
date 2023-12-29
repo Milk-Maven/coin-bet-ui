@@ -24,8 +24,11 @@
 	async function handleSubmit() {
 		if (!$app.publicKey) {
 			const res = await requireLogin();
-			if (!res) {
-				alert('login required to submit an offering');
+			if (res?.publicKeyAdded) {
+				alert('hey');
+				app.set({ publicKey: res?.publicKeyAdded ?? '' });
+			} else {
+				alert('need to sign in');
 			}
 		}
 
@@ -35,7 +38,7 @@
 			outcomes: [outcome1, outcome2, outcome3, outcome4].filter((o) => o !== ''),
 			startDate,
 			endDate,
-			publicKey: $app.publicKey
+			creatorPublicKey: $app.publicKey
 		};
 		const validationResult = offeringCreateValidation.safeParse(betRequest);
 		if (!validationResult.success) {
@@ -48,11 +51,18 @@
 			outcome3Error = validationErrors.fieldErrors.outcomes?.[0] ?? '';
 			outcome4Error = validationErrors.fieldErrors.outcomes?.[0] ?? '';
 		} else {
+			console.log(betRequest);
 			// Reset error messages
-			offeringCreate(validationResult.data).then((res) => {
-				console.log(res);
-				resetForm();
-			});
+			const res = await offeringCreate(validationResult.data)
+				.then((res) => {
+					console.log(res);
+					alert('succuessfully submitted');
+					resetForm();
+				})
+				.catch((error) => {
+					console.log(error);
+					alert('something went wrong');
+				});
 		}
 	}
 
@@ -77,6 +87,10 @@
 </script>
 
 <main class="w-3/5 mx-auto text-primet">
+	<div class="text-white">{$app.publicKey}asdf</div>
+	<button class="{appBorder} p-5 bg-secondary1 rounded-lg" on:click={handleSubmit}
+		>create offering
+	</button>
 	<h1 class="text-xl mb-10 text-center">make an offering</h1>
 	<YourDatePickerComponent
 		errorMessage={endDateError}

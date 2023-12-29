@@ -17,6 +17,7 @@ export type OfferingExtraDateRequest = {
   endDate: string,
   totalOptions: string
   isOffering: 'true'
+  creatorPublicKey: string
 };
 
 export type OfferingOptionsExtraDataRequest = {

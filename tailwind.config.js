@@ -1,25 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    extend: {
-      focus: {
-        cursor: 'pointer',
-        outline: 'none',
-      },
-      colors: {
-        prime1: "#000",
-        prime2: "#6A2204",
-        primet: "#E1860D",
-        primet2: "#fff",
-        borderColor: "#E72A43",
-        // borderColor: "#913F0E",
-        //
-        secondary1: "#1E1E1E",
-        secondary2: "#CFB53B",
-      }
-    }
-  }
+  darkMode: 'class',
+  content: [
+    './src/**/*.{html,js,svelte,ts}',
+    // 3. Append the path to the Skeleton package
+    //join(require.resolve(
+    //'@skeletonlabs/skeleton'),
+    //'../**/*.{html,js,svelte,ts}'
+    //)
+  ],
+  colors: {
+    prime1: "#000",
+    prime2: "#6A2204",
+    primet: "#E1860D",
+    primet2: "#fff",
+    borderColor: "#E72A43",
+    // borderColor: "#913F0E",
+    //
+    secondary1: "#1E1E1E",
+    secondary2: "#CFB53B",
+  },
+  plugins: [
+    // 4. Append the Skeleton plugin (after other plugins)
+    // seleton
+  ]
 }
 // Primary Accent:
 //
