@@ -27,6 +27,14 @@
         <strong class="text-xl uppercase">The Golden Calf</strong>
       </svelte:fragment>
       <svelte:fragment slot="trail">
+        <a 
+          class="btn btn-sm variant-ghost-surface"
+          href="/admin"
+          rel="author"
+          target="_self"
+        >
+          Admin
+        </a>
         <a
           class="btn btn-sm variant-ghost-surface"
           href="https://discord.gg/EXqV7W8MtY"
