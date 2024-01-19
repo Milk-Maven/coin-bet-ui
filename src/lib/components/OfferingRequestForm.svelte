@@ -1,7 +1,6 @@
 <script lang="ts">
   import { offeringCreate } from "$lib/api";
   import { offeringCreateValidation } from "$lib/shared/validators";
-  import { appBorder } from "$lib/util";
   import { requireLogin } from "$lib/deso";
   import "../../app.postcss";
   import YourDatePickerComponent from "../components/calendar.svelte";
