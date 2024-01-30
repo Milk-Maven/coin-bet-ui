@@ -3,9 +3,11 @@
   import { getSnapShot, post, type GetSnapShotResponse } from "$lib/api";
   import { onMount } from "svelte";
   import { truncateAndAddEllipsis } from "$lib/util";
+  import type { CalfOfferingGame } from "$lib/shared/validators";
   let makeOffering = false;
 
   let snapshot: GetSnapShotResponse | null = null;
+  let selectedOffering: CalfOfferingGame;
   onMount(async () => {
     try {
       snapshot = await getSnapShot({ week: null });
@@ -81,7 +83,11 @@
         </thead>
         <tbody>
           {#each snapshot.offerings as row, i}
-            <tr>
+            <tr
+              on:click={() => {
+                selectedOffering = row;
+              }}
+            >
               <!-- <td>{row.PostHashHex}</td> -->
               <td>{row.Body}</td>
               <td>{row.endDate}</td>
@@ -103,8 +109,19 @@
   {:else}
     offerings: no offerings found
   {/if}
-  {#if !makeOffering}
-    <OfferingRequestForm />
+  {#if selectedOffering}
+    <div class="mt-5">
+      <div class="card">
+        // sort this by offering.option.bidders // show some stats on it //
+        payout here
+        {selectedOffering.options}
+      </div>
+    </div>
+  {/if}
+  {#if makeOffering}
+    <div class="mt-5">
+      <OfferingRequestForm />
+    </div>
   {/if}
 </div>
 
