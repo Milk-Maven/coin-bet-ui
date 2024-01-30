@@ -27,3 +27,13 @@ export const formatDateForUser = (inputDate: string) => {
   return formattedDateTime;
 };
 
+export function truncateAndAddEllipsis(inputStr: string) {
+  let truncatedStr = ""
+  if (inputStr.length > 6) {
+    truncatedStr = inputStr.slice(0, 12) + '...';
+  } else {
+    truncatedStr = inputStr;
+  }
+  return truncatedStr;
+}
+

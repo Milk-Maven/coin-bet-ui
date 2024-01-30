@@ -1,7 +1,7 @@
 
 // export const node = 'https://node.deso.org/api/v0/';
 import { endpoints } from './shared/utils';
-import type { OfferringCreateRequest } from './shared/validators';
+import type { CalfOfferingGame, CalfProfileGame, CalfWeekGame } from './shared/validators';
 
 // Make an HTTP POST request
 // TODO turn this api into array that returns request function response function, request model, response model, per endpoint
@@ -24,12 +24,15 @@ export async function post(endpoint: string, payload: any = {}) {
   });
   response = await response.json();
   // @ts-ignore
-  return response.result.data;
+  return response;
 }
-export const offeringCreate = async (payload: OfferringCreateRequest) => {
-  try {
-    await post(endpoints.offeringCreate, payload)
-  } catch (e) {
-    console.log(e)
-  }
+export type GetSnapShotResponse = { profile: CalfProfileGame, week: CalfWeekGame, offerings: CalfOfferingGame[] }
+export const getSnapShot = async (payload: { week: number | null }): Promise<GetSnapShotResponse> => {
+  const res = await post(endpoints.snapshot, payload) as unknown as GetSnapShotResponse
+  return res
+}
+
+// export type MakeOfferingResponse = { profile: CalfProfileGame, week: CalfWeekGame, offerings: CalfOfferingGame[] }
+export const makeOffering = async (payload: CalfOfferingGame) => {
+  post(endpoints.offering, payload)
 }

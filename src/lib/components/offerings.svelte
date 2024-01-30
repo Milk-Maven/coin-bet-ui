@@ -29,7 +29,6 @@
     // Optional: A list of footer labels.
     foot: ["Total", "", '<code class="code">5</code>'],
   };
-  console.log(offerings);
 </script>
 
 <main>

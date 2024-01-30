@@ -3,7 +3,6 @@
   import { Page } from "$lib/util";
   import type { PostEntryResponse } from "deso-protocol";
   export let data: { offerings: PostEntryResponse[] };
-  console.log(data);
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">

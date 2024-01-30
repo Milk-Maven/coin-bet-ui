@@ -1,6 +1,7 @@
 <script lang="ts">
   import { post } from "$lib/api";
   import { endpoints } from "../../lib/shared/utils";
+  import Dashboard from "./dashboard.svelte";
 
   async function fakePromise(delay: number) {
     return new Promise((resolve) => {
@@ -28,6 +29,9 @@
   // OptionPostHashHex?: string[];
   // PosterPublicKeyBase58Check?: string;
 
+  async function restartState() {
+    post(endpoints.resetState);
+  }
   //start week in backend returns start week information
   async function startWeek(description: string, init: boolean) {
     startWeekLoading.loading = true;
@@ -42,7 +46,7 @@
     }
   }
 
-  //make offering in backend wasn't returning anything so there isn't anything to do with data
+  //make offering in backend wasendpoints.initn't returning anything so there isn't anything to do with data
   async function createNewOffering(offering) {
     newOfferingLoading.loading = true;
     newOfferingLoading.error = false;
@@ -76,48 +80,64 @@
   }
 </script>
 
-<div class="text-center p-4 m-4 border-4 border-rose-900 rounded-lg">
-  <button on:click={() => startWeek("test post", false)} />
-  <h1 class="text-3xl mb-2">Admin</h1>
-  <div class="flex flex-col justify-evenly gap-4 sm:flex-row">
-    <div class="card p-4">
-      <button
-        class="btn variant-soft-secondary"
-        on:click={() => startWeek("description", false)}
-        disabled={startWeekLoading.loading}>Start New Week</button
-      >
-      <p>
-        starts new week of golden calf. I think this is just for dev purposes?
-      </p>
-      {#if !startWeekLoading.loading && !startWeekLoading.success && !startWeekLoading.error}
-        <p>You haven't started a new week</p>
-      {/if}
-      {#if startWeekLoading.loading}
-        <p>....sending request</p>
-      {:else if startWeekLoading.success}
-        <p>Started week successfully</p>
-      {:else if startWeekLoading.error}
-        <p>there was an error starting week</p>
-      {/if}
-    </div>
-    <div class="card p-4">
-      <button
-        class="btn variant-soft-secondary"
-        on:click={() => createNewOffering("fosskdfj")}
-        >Create New Offering</button
-      >
-      <p>this should create a fake new offering?</p>
-      {#if !newOfferingLoading.loading && !newOfferingLoading.success && !newOfferingLoading.error}
-        <p>You haven't created a new offering</p>
-      {/if}
-      {#if newOfferingLoading.loading}
-        <p>....sending request</p>
-      {:else if newOfferingLoading.success}
-        <p>created offering successfully</p>
-      {:else if newOfferingLoading.error}
-        <p>there was an error creating a new offering</p>
-      {/if}
-    </div>
-  </div>
+<div class="flex flex-col justify-evenly gap-4 sm:flex-row mt-4">
+  <Dashboard />
 </div>
-
+<!-- <div class="text-center p-4 m-4 border-4 border-rose-900 rounded-lg"> -->
+<!--   <button on:click={() => startWeek("test post", false)} /> -->
+<!--   <h1 class="text-3xl mb-2">Admin</h1> -->
+<!--   <div class="flex flex-col justify-evenly gap-4 sm:flex-row"> -->
+<!--     <div class="card p-4"> -->
+<!--       <button -->
+<!--         class="btn variant-soft-secondary" -->
+<!--         on:click={() => startWeek("description", false)} -->
+<!--         disabled={startWeekLoading.loading}>Start New Week</button -->
+<!--       > -->
+<!--       <button -->
+<!--         class="btn variant-soft-secondary" -->
+<!--         on:click={() => restartState()} -->
+<!--         disabled={startWeekLoading.loading}>restart state</button -->
+<!--       > -->
+<!--       <button -->
+<!--         class="btn variant-soft-secondary" -->
+<!--         on:click={() => startWeekInit("test description")} -->
+<!--         disabled={startWeekLoading.loading}>calf init</button -->
+<!--       > -->
+<!--       <p> -->
+<!--         starts new week of golden calf. I think this is just for dev purposes? -->
+<!--       </p> -->
+<!--       {#if !startWeekLoading.loading && !startWeekLoading.success && !startWeekLoading.error} -->
+<!--         <p>You haven't started a new week</p> -->
+<!--       {/if} -->
+<!--       {#if startWeekLoading.loading} -->
+<!--         <p>....sending request</p> -->
+<!--       {:else if startWeekLoading.success} -->
+<!--         <p>Started week successfully</p> -->
+<!--       {:else if startWeekLoading.error} -->
+<!--         <p>there was an error starting week</p> -->
+<!--       {/if} -->
+<!--     </div> -->
+<!--     <div class="card p-4"> -->
+<!--       <button -->
+<!--         class="btn variant-soft-secondary" -->
+<!--         on:click={() => createNewOffering("fosskdfj")} -->
+<!--         >Create New Offering</button -->
+<!--       > -->
+<!--       <p>this should create a fake new offering?</p> -->
+<!--       {#if !newOfferingLoading.loading && !newOfferingLoading.success && !newOfferingLoading.error} -->
+<!--         <p>You haven't created a new offering</p> -->
+<!--       {/if} -->
+<!--       {#if newOfferingLoading.loading} -->
+<!--         <p>....sending request</p> -->
+<!--       {:else if newOfferingLoading.success} -->
+<!--         <p>created offering successfully</p> -->
+<!--       {:else if newOfferingLoading.error} -->
+<!--         <p>there was an error creating a new offering</p> -->
+<!--       {/if} -->
+<!--     </div> -->
+<!--   </div> -->
+<!---->
+<!--   <div class="flex flex-col justify-evenly gap-4 sm:flex-row"> -->
+<!--     <Dashboard /> -->
+<!--   </div> -->
+<!-- </div> -->
