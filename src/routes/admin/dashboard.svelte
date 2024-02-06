@@ -75,10 +75,15 @@
           <tr>
             <!-- <th>post hash hex</th> -->
             <th>body</th>
+
+            <th>option1</th>
+            <th>option2</th>
+            <th>option3</th>
+            <th>option4</th>
             <th>end date</th>
-            <th>options</th>
             <th>creator public key</th>
             <th>winning option</th>
+            <th>sacrifices</th>
           </tr>
         </thead>
         <tbody>
@@ -90,10 +95,14 @@
             >
               <!-- <td>{row.PostHashHex}</td> -->
               <td>{row.Body}</td>
+              {#each row.options as option}
+                <td>{option}</td>
+              {/each}
               <td>{row.endDate}</td>
-              <td>{row.options}</td>
+
               <td>{truncateAndAddEllipsis(row.creatorPublicKey)}</td>
               <td>{row.winningOption}</td>
+              <td><a on:click={() => {}}>show more</a></td>
             </tr>
           {/each}
         </tbody>
