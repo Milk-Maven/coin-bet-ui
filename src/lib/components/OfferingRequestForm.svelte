@@ -40,6 +40,7 @@
       options: [outcome1, outcome2, outcome3, outcome4].filter((o) => o !== ""),
       endDate,
       creatorPublicKey: $app.publicKey,
+      state: "voting",
     };
     const validationResult = CalfOfferingValidation.safeParse(betRequest);
     if (!validationResult.success) {
@@ -52,7 +53,6 @@
       // outcome3Error = validationErrors.fieldErrors.outcomes?.[0] ?? "";
       // outcome4Error = validationErrors.fieldErrors.outcomes?.[0] ?? "";
     } else {
-      console.log(betRequest);
       // Reset error messages
       const res = await makeOffering(validationResult.data)
         .then((res: any) => {

@@ -5,6 +5,7 @@ export const CalfProfileValidation = z.object({
   calfWeeks: z.record(z.string()).optional(),
   currentWeekHashHex: z.string().optional()
 });
+
 export type CalfProfileGame = TypeOf<typeof CalfProfileValidation>;
 // current week state
 export const CalfWeekValidation = z.object({
@@ -18,7 +19,8 @@ export const CalfOfferingValidation = z.object({
   creatorPublicKey: z.string(),
   options: z.array(z.string()),
   winningOption: z.string(),
-  Body: z.string()
+  Body: z.string(),
+  state: z.enum(['active', 'voting'])
 });
 export type CalfOfferingGame = TypeOf<typeof CalfOfferingValidation>;
 // sacrifice

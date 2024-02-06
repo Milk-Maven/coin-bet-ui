@@ -1,3 +1,5 @@
+
+import { verify } from "$lib/shared/utils";
 export const appBorder = 'border border-dashed border border-borderColor';
 export const Page = {
   Welcome: 'welcome',
@@ -33,4 +35,3 @@ export function truncateAndAddEllipsis(inputStr: string) {
   }
   return truncatedStr;
 }
-

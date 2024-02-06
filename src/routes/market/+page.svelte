@@ -3,6 +3,7 @@
   import { Page } from "$lib/util";
   import type { PostEntryResponse } from "deso-protocol";
   export let data: { offerings: PostEntryResponse[] };
+  export let tab: "Active" | "Voting" = "Active";
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
