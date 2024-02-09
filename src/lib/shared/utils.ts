@@ -65,3 +65,12 @@ export type StartWeekRequest = {
 // export type RunMakeSacrifice = { message: string, payload: Sacrifice }
 
 
+type GenericObject = Record<string, any>;
+export function groupBy<T extends GenericObject>(array: T[], key: keyof T): Record<string, T[]> {
+  return array.reduce((acc, obj) => {
+    const keyValue = obj[key] as string | number; // Assuming the key is a string or number
+    acc[keyValue] = acc[keyValue] || [];
+    acc[keyValue].push(obj);
+    return acc;
+  }, {} as Record<string, T[]>);
+}
